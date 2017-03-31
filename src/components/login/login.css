@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0
+}
+.main-login-div{
+    width: 100%;
+   
+}
+
+.full-width-container{
+    width: 100% !important;
+}
+.centerAlign{
+      width: 40%;
+    margin: 0 auto;
+    margin-top: 50px
+}
+.signupbutton{
+    height: 20;
+}
+.text{
+    text-align: center;
+    font-size: '36px';
+    font-weight: bold;
+    
+}
