@@ -12,6 +12,13 @@ export function applicationReducer(state = initial_state, action) {
       return state;
     }
 
+    // case ActionTypes.logOutRequestSuccess: {
+    //   var newState001 = Object.assign({}, state, { logout: action.data });
+    //   state = newState001;
+    //   return state;
+    // }
+
+
     case ActionTypes.addStoreRequestSuccess: {
       var newState2 = Object.assign({}, state, { store: action.data });
       state = newState2;

@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import AppBar from './components/AppBar/Appbar'
 import LoginContainer from './containers/login'
-import Dashboard from "./components/Dashboard/dashboard"
+// import Dashboard from "./components/Dashboard/dashboard"
+import mainRootContainer from './components/Dashboard/dashboard'
 import AddStoreContainer from './containers/createStore'
 import AddProductContainer from './containers/createProduct'
 import AddPurchaseDetailContainer from './containers/purchaseDetail'
@@ -32,7 +33,7 @@ class RootComponent extends Component {
                 <IndexRoute component={LoginContainer}/>
               </Route>
 
-              <Route path="dashboard" component={Dashboard}>
+              <Route path="dashboard" component={mainRootContainer}>
               <Route path="/createStore" component={AddStoreContainer}/>
               <Route path="/createProduct" component={AddProductContainer}/>
               <Route path="/AddPurchaseDetail" component={AddPurchaseDetailContainer}/>

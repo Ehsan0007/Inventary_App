@@ -6,20 +6,24 @@ export function addSaleRequest(ProductData) {
         dispatch(AddSaleRequest());
         return fbConfigs.database.ref('/sale').push(ProductData).then((data)=>{
             return fbConfigs.database.ref('/products/' + ProductData.productId).once('value',snap=>{
+                if((snap.val().quantity) < (ProductData.Quantity)){
+                    dispatch(addProductRequestFailed());
+                    alert("Sorry we don't have enough Stock")
+                }
+                else{
                  var total = {
                     quantity : parseInt(snap.val().quantity) - parseInt(ProductData.Quantity),
                     store : ProductData.store,
                     Unit : ProductData.Unit,
-                    saleVolume : parseInt(snap.val().quantity) * parseInt(ProductData.Unit),
+                    saleVolume : (parseInt(snap.val().quantity) - parseInt(ProductData.Quantity))* parseInt(ProductData.Unit),
                 }
-                console.log("sale ki quantity" , total.saleVolume)
                 return fbConfigs.database.ref('/products/' + ProductData.productId).update(total,(done)=>{
                     alert("Successfully Added.");
                    dispatch(addSaleRequestSuccess(data));
                 })
-                 
+                }     
             })
-           
+            
         })
     }
 }
@@ -37,8 +41,8 @@ function addSaleRequestSuccess(data) {
     };
 }
 
-// function addProductRequestFailed() {
-//     return {
-//         type: ActionTypes.addProductRequestFailed
-//     };
-// }
+function addProductRequestFailed() {
+    return {
+        type: ActionTypes.addProductRequestFailed
+    };
+}

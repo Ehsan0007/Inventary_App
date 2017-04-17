@@ -20,8 +20,8 @@ class Stock extends Component {
                     <mat.AppBar title="Stock" showMenuIconButton={false} />
                     <mat.CardText>
                         {stock && stock.length > 0 ?
-                            <mat.Table displayCheckbox={false}>
-                                <mat.TableHeader>
+                            <mat.Table   adjustForCheckbox={false}  displayRowCheckbox={false}>
+                             <mat.TableHeader adjustForCheckbox={false}displaySelectAll={false}>
                                     <mat.TableRow>
                                         <mat.TableHeaderColumn>Store</mat.TableHeaderColumn>
                                         <mat.TableHeaderColumn>Product</mat.TableHeaderColumn>
@@ -30,7 +30,7 @@ class Stock extends Component {
                                         <mat.TableHeaderColumn>Sale Volume</mat.TableHeaderColumn>
                                     </mat.TableRow>
                                 </mat.TableHeader>
-                                <mat.TableBody>
+                                <mat.TableBody displayRowCheckbox={false}>
                                     {stock.map((data, index) => {
                                         return (
                                             <mat.TableRow key={index}>

@@ -12,7 +12,7 @@ class AddPurchaseDetail extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    handleStorename = (event,index,value) =>{this.setState({store : value});console.log(value)}
+    handleStorename = (event,index,value) =>{this.setState({store : value ,key : value });console.log(value)}
     handleProductname = (event,index,value) =>{this.setState({product : value , key : value})}
 
 
@@ -36,14 +36,20 @@ class AddPurchaseDetail extends Component {
         const combine = this.state.product;
         const product = combine.split("||");
         const productname = product[0];
-        const key = product[1]; 
+        const productkey = product[1]; 
         console.log("hme key se ye mila" , product)
+
+        const combine2 = this.state.store;
+        const store = combine2.split("||");
+        const storename = store[0];
+        const Storekey = store[1];
 
         evt.preventDefault();
         var ObjectSave ={
-            store : this.state.store,
+            store : storename,
+            storeId : Storekey,
             product : productname,
-            productId : key,
+            productId : productkey,
             PurchasesDate : months + " /" + this.state.PurchasesDate.getDate()   + "/" + this.state.PurchasesDate.getFullYear() + " " + " "  + " " + hours +  ":" + this.state.PurchasesDate.getMinutes() + ":" + this.state.PurchasesDate.getSeconds()+ " "  +  timeconvention,
             Quantity : this.refs.quantity.getValue(),
             Unit : this.refs.unitprice.getValue(),
@@ -94,7 +100,7 @@ class AddPurchaseDetail extends Component {
                                 {
                                     store.map((v, i) => {
                                         return (
-                                            <mat.MenuItem value={v.storeName} key={i} primaryText={v.storeName}></mat.MenuItem>
+                                            <mat.MenuItem value={v.storeName +  "||" + v.key} key={i} primaryText={v.storeName}></mat.MenuItem>
                                         )
                                     })}                            
                                     </mat.SelectField><br/>

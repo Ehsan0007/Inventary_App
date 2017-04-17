@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import * as mat from 'material-ui';
 import './dashboard.css'
 import {browserHistory} from 'react-router';
+import {logOutRequest} from '../../store/actions/logout'
+import {connect} from 'react-redux'
 
 class Dashboard extends Component{
     constructor(){
@@ -48,7 +50,10 @@ class Dashboard extends Component{
         // this.setState({open : !this.state.open})
         browserHistory.push('/stock')
     }
-
+    logout = () =>{
+        this.props.logoutRequest()
+        // alert("Heelo gone")
+    }
     render(){
         return(
             <div>
@@ -68,7 +73,7 @@ class Dashboard extends Component{
                     <mat.MenuItem onTouchTap={this.createProduct}>Create Product</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.addPurchase}>Add Purchase Detail</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.addSale}>Add Sale Detail</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoPurchase}>Purchase</mat.MenuItem>
+                    <mat.MenuItem onTouchTap={this.gotoPurchase}>Purchase Stock</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoSale}>View Sales</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoStock}>Stock</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.logout}>Logout</mat.MenuItem>
@@ -79,4 +84,17 @@ class Dashboard extends Component{
     }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+    return {
+        application: state.application
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        logoutRequest: () => dispatch(logOutRequest()),
+    };
+}
+
+const mainRootContainer =  connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default mainRootContainer;

@@ -21,8 +21,8 @@ class SalesDetail extends Component{
                     <mat.AppBar title="Sales Detail" showMenuIconButton={false}  />
                     <mat.CardText>
                       {sale && sale.length > 0 ?
-                        <mat.Table>
-                             <mat.TableHeader>
+                        <mat.Table   adjustForCheckbox={false}  displayRowCheckbox={false}>
+                             <mat.TableHeader adjustForCheckbox={false}displaySelectAll={false}>
                             <mat.TableRow>
                                 <mat.TableHeaderColumn>Store</mat.TableHeaderColumn>
                                 <mat.TableHeaderColumn>Product</mat.TableHeaderColumn>
@@ -32,7 +32,7 @@ class SalesDetail extends Component{
                                 <mat.TableHeaderColumn>Time</mat.TableHeaderColumn>
                             </mat.TableRow>
                             </mat.TableHeader>
-                             <mat.TableBody>
+                             <mat.TableBody displayRowCheckbox={false}>
                                 {sale.map((data,index)=>{
                                     return(
                                         <mat.TableRow key={index} >

@@ -5,6 +5,10 @@ const actionTypes = {
   LoginRequestFailed: 'LoginRequestFailed',
   LoginRequestSuccess: 'LoginRequestSuccess',
 
+  logOutRequest : 'logOutRequest',
+  logOutRequestSuccess : 'logOutRequestSuccess',
+  logOutRequestFailed  :'logOutRequestFailed',
+
   addStoreRequest : 'addStoreRequest',
   addStoreRequestSuccess  :'addStoreRequestSuccess',
   addStoreRequestFailed  :'addStoreRequestFailed',
@@ -21,9 +25,11 @@ const actionTypes = {
 
   AddPurchaseRequest : 'AddPurchaseRequest',
   addPurchaseRequestSuccess : 'addPurchaseRequestSuccess',
+  
 
   AddSaleRequest:'AddSaleRequest',
   addSaleRequestSuccess : 'addSaleRequestSuccess',
+  addProductRequestFailed : 'addProductRequestFailed',
 
   ViewStocktRequest : 'ViewStocktRequest',
   viewStockRequestSuccess  :'viewStockRequestSuccess',

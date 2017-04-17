@@ -15,11 +15,11 @@ class Purchase extends Component{
         return(
             <div>
                   <mat.Card className="stock">
-                    <mat.AppBar title="Purchase" showMenuIconButton={false}  />
+                    <mat.AppBar title="Purchase Stock" showMenuIconButton={false}  />
                     <mat.CardText>
                       {stock && stock.length > 0 ?
-                        <mat.Table displayCheckbox={false}>
-                             <mat.TableHeader>
+                        <mat.Table   adjustForCheckbox={false}  displayRowCheckbox={false}>
+                             <mat.TableHeader adjustForCheckbox={false}displaySelectAll={false}>
                             <mat.TableRow>
                                 <mat.TableHeaderColumn>Store</mat.TableHeaderColumn>
                                 <mat.TableHeaderColumn>Product</mat.TableHeaderColumn>
@@ -29,7 +29,7 @@ class Purchase extends Component{
                                 <mat.TableHeaderColumn>Time</mat.TableHeaderColumn>
                             </mat.TableRow>
                             </mat.TableHeader>
-                             <mat.TableBody>
+                             <mat.TableBody displayRowCheckbox={false}>
                                  {stock.map((data,index)=>{
                                      return(
                                          <mat.TableRow key={index}>

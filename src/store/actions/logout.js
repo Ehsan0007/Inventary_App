@@ -1,14 +1,15 @@
 import ActionTypes from './actionTypes';
 import * as fbConfigs from '../../configs/dbconfigs';
-import {browserHistory} from 'react-router'
+import { browserHistory } from 'react-router'
 
-export function logOutRequest(loginData) {
+export function logOutRequest() {
+
     return dispatch => {
         dispatch(LogOutRequest());
         return fbConfigs.fbAuth.signOut()
             .then((data) => {
                 dispatch(logOutRequestSuccess());
-                 browserHistory.push('/')
+                browserHistory.push('/')
             })
             .catch((error) => {
                 dispatch(logOutRequestFailed());
@@ -18,6 +19,7 @@ export function logOutRequest(loginData) {
 
 function LogOutRequest() {
     return {
+
         type: ActionTypes.logOutRequest
     };
 }
